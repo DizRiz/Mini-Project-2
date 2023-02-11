@@ -1,9 +1,10 @@
-import logo from './logo.svg';
+import { db } from './firebase';
 import './App.css';
 
 function App() {
+  console.log(db);
   return (
-    <p>Hello</p>
+    <h1>Initial Commit</h1>
   );
 }
 

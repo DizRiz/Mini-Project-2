@@ -1,16 +1,21 @@
-import db from './firebase';
-import './App.css';
-import AddTodo from './AddTodo';
-import AllTodos from './AllTodos';
+import React, { useState } from "react";
+import AddTodo from "./AddTodo";
+import AllTodos from "./AllTodos";
+import DeleteTodo from "./DeleteTodo";
 
 function App() {
-  console.log(db);
+  const [todos, setTodos] = useState([]);
+  const [todo, setTodo] = useState("");
+
+
+
   return (
     <>
-    <h1>My To Do List</h1>
-      <AddTodo />
-      <AllTodos />
-      </>
+      <h1>My To Do List</h1>
+      <AddTodo todo={todo} setTodo={setTodo} />
+      <AllTodos todos={todos} setTodos={setTodos} />
+      <DeleteTodo />
+    </>
   );
 }
 

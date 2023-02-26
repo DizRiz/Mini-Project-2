@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { collection, addDoc } from "firebase/firestore";
 import db from "./firebase";
 
-function AddTodo() {
-  const [todo, setTodo] = useState("");
+function AddTodo({ todo, setTodo }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,7 +11,8 @@ function AddTodo() {
       const docRef = await addDoc(collection(db, "todos"), {
         todo: todo,
       });
-      console.log("Document writteen with ID", docRef.id);
+      setTodo("");
+      console.log("Document written with ID", docRef.id);
     } catch (e) {
       console.error("Error adding document:", e);
     }
@@ -21,7 +21,7 @@ function AddTodo() {
   return (
     <div>
       <input
-        type="test"
+        type="text"
         placeholder="Add a Todo"
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
